@@ -3,17 +3,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
     [SerializeField] private int lifePoints;
 
-    private void Start()
-    {
-    }
-
-    private void Update()
-    {
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("DEADLINE"))
+        if (other.CompareTag("DeadLine"))
         {
             Debug.Log("Enemy reached deadline");
             Destroy(gameObject);
