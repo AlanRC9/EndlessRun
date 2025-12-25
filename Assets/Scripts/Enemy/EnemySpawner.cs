@@ -5,34 +5,34 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField] private float enemySpeed;
     [SerializeField] private float spawnRate;
     [SerializeField] private float spawnRange;
-    private float fireTimer;
-    private float timeSinceLastSpawnRateChange;
-    private float initialSpawnRate;
+    [SerializeField] private float timeToIncreaseSpawnRate;
+    private float fireTimer = 0;
+    // private float timeSinceLastSpawnRateChange;
+    // private float initialSpawnRate;
 
     private void Start()
     {
-        fireTimer = spawnRate;
         InvokeRepeating("SpawnEnemy", 0, spawnRate);
         // initialSpawnRate = spawnRate;
-        // timeSinceLastSpawnRateChange = 0f;
+        // timeSinceLastSpawnRateChange = 0;
     }
 
     private void Update() {
-        fireTimer -= Time.deltaTime;
+        fireTimer += Time.deltaTime;
         // timeSinceLastSpawnRateChange += Time.deltaTime;
         
         // // Every 30 seconds, reduce the spawnRate by 10% (make it 10% faster)
-        // if (timeSinceLastSpawnRateChange >= 30f)
+        // if (timeSinceLastSpawnRateChange >= 30)
         // {
-        //     spawnRate = Mathf.Max(0.1f, spawnRate * 0.9f); // Reduce the spawnRate by 10% (multiply by 0.9)
-        //     timeSinceLastSpawnRateChange = 0f;
+        //     spawnRate = Mathf.Max(0.1, spawnRate * 0.9); // Reduce the spawnRate by 10% (multiply by 0.9)
+        //     timeSinceLastSpawnRateChange = 0;
         // }
         
         // Enemies spawner based on timer.
-        if (fireTimer <= 0f)
+        if (fireTimer >= timeToIncreaseSpawnRate)
         {
-            spawnRate = Mathf.Max(0.1f, spawnRate * 0.9f); // Increase enemies spawnRate in 10% every 30 seconds.
-            fireTimer = spawnRate;
+            spawnRate = Mathf.Max(0.1, spawnRate * 0.9); // Increase enemies spawnRate in 10% every 30 seconds.
+            fireTimer = 0;
         }
     }
     
