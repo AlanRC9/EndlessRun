@@ -18,6 +18,6 @@ public class EnemySpawner : MonoBehaviour {
     private Vector3 RandomStartPosition()
     {
         float XPosition = Random.Range(-spawnRange, spawnRange);
-        return new Vector3(XPosition, 0, 0);
+        return new Vector3(XPosition, 0, transform.position.z);
     }
 }
