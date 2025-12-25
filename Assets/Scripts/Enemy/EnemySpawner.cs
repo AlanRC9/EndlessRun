@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour {
         // Enemies spawner based on timer.
         if (fireTimer >= timeToIncreaseSpawnRate)
         {
-            spawnRate = Mathf.Max(0.1, spawnRate * 0.9); // Increase enemies spawnRate in 10% every 30 seconds.
+            spawnRate = Mathf.Max(0.1f, spawnRate * 0.9f); // Increase enemies spawnRate in 10% every 30 seconds.
             fireTimer = 0;
         }
     }
