@@ -7,8 +7,8 @@ using UnityEngine.Windows;
 using static UnityEngine.GraphicsBuffer;
 
 public class PlayerController : MonoBehaviour {
-    public InputAction touchInputAction;
-    public float movementSens;
+    [SerializeField] private InputAction touchInputAction;
+    [SerializeField] private float movementSens;
 
     Rigidbody rb;
 
@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour {
         Vector2 touch = touchInputAction.ReadValue<Vector2>();
 
         float centeredX = (touch.x / Screen.width) - 0.5f;
-        float centeredY = (touch.y / Screen.height) - 0.5f;
 
         DOTween.Clear();
         transform.DOMoveX(centeredX * movementSens, 0.3f).SetEase(Ease.OutQuad);

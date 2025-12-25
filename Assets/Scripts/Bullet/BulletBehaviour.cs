@@ -1,0 +1,30 @@
+using UnityEngine;
+using UnityEngine.Rendering.Universal;
+
+public class BulletBehaviour : MonoBehaviour
+{
+    private int damage;
+
+    private void Start()
+    {
+        damage = 1;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            //other.GetComponent<Enemy>().TakeDamage(damage);
+        }
+        if (other.CompareTag("BulletDeadLine"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void setDamage(int newDamage)
+    {
+        damage = newDamage;
+    }
+
+}

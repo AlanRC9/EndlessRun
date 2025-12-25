@@ -16,7 +16,6 @@ public class CannonsManager : MonoBehaviour
     private void Start()
     {
         SetNumberOfCannons(1);
-        
     }
 
     public void SetNumberOfCannons(int newCannonCount)
