@@ -21,7 +21,6 @@ public class Cannon : MonoBehaviour
             ScoreManager.Instance.AddPoints(10);
             fireTimer = fireRate;
         }
-
     }
 
     private void Shoot()
@@ -30,5 +29,4 @@ public class Cannon : MonoBehaviour
         newBullet.transform.position = transform.position;
         newBullet.GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 0, bulletSpeed);
     }
-
 }
