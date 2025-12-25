@@ -9,13 +9,13 @@ public class Enemy : MonoBehaviour {
         {
             Debug.Log("Enemy reached deadline");
             Destroy(gameObject);
+
         }
     }
 
     public void TakeDamage(int damage)
     {
         lifePoints -= damage;
-        Debug.Log("Enemy life points: " + lifePoints);
         if (lifePoints <= 0)
         {
             OnDie();
@@ -24,7 +24,6 @@ public class Enemy : MonoBehaviour {
 
     private void OnDie()
     {
-        Debug.Log("Enemy died");
         Destroy(gameObject);
     }
 }
