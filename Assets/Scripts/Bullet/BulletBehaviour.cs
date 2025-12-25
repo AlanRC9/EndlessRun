@@ -18,7 +18,7 @@ public class BulletBehaviour : MonoBehaviour
         }
         if (other.CompareTag("BulletDeadLine"))
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
