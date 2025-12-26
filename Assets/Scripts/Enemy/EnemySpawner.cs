@@ -6,23 +6,33 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField] private float spawnRate;
     [SerializeField] private float spawnRange;
     [SerializeField] private float timeToIncreaseSpawnRate;
-    [SerializeField] private float spawnRateSpeedIncreasePercentage = 1.1f;
-    [SerializeField] private float minSpawnRate;
-    private float fireTimer = 0;
+    [SerializeField] private float spawnRateIncrement = 1.1f;
+    private float rateTimer = 0;
+    private float spawnTimer = 0;
 
     private void Start()
     {
-        InvokeRepeating("SpawnEnemy", 0, spawnRate);
+        //InvokeRepeating("SpawnEnemy", 0, spawnRate);
     }
 
     private void Update() {
-        fireTimer += Time.deltaTime;
+
+        spawnTimer += Time.deltaTime;
+
+        if (spawnTimer >= spawnRate)
+        {
+            SpawnEnemy();
+            spawnTimer = 0;
+        }
+
+        rateTimer += Time.deltaTime;
         
         // Enemies spawner based on timer.
-        if (fireTimer >= timeToIncreaseSpawnRate)
+        if (rateTimer >= timeToIncreaseSpawnRate)
         {
-            spawnRate /= spawnRateSpeedIncreasePercentage;
-            fireTimer = 0;
+            spawnRate /= spawnRateIncrement;
+
+            rateTimer = 0;
         }
     }
     
